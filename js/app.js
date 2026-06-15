@@ -249,16 +249,9 @@
       undefined,
       "FAST",
     );
-    pdf.save(
-      generateSafeFilename(
-        config.previewRoot.dataset.filenamePrefix,
-        config.titleInput.value,
-        guestName,
-        "pdf",
-      ),
-    );
-
-    // Also download the exact same invitation as a PNG image.
+    // Download the exact same invitation as a PNG image first, then the PDF.
+    // Spacing the two triggers on separate ticks keeps browsers from
+    // suppressing the second download when they fire back-to-back.
     downloadDataUrl(
       imageData,
       generateSafeFilename(
@@ -268,6 +261,17 @@
         "png",
       ),
     );
+
+    window.setTimeout(function () {
+      pdf.save(
+        generateSafeFilename(
+          config.previewRoot.dataset.filenamePrefix,
+          config.titleInput.value,
+          guestName,
+          "pdf",
+        ),
+      );
+    }, 150);
   }
 
   function initInvitationPage() {
