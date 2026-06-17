@@ -44,7 +44,7 @@
     }
 
     if (normalizedTitle === "FAMILY") {
-      return (displayTitle || "FAMILY") + " " + normalizedName;
+      return "Family of " + normalizedName;
     }
 
     if (normalizedTitle === "MR & MRS & FAMILY") {
