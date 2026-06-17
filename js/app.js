@@ -38,13 +38,14 @@
     var normalizedTitle = normalizeTitle(title);
     var normalizedName = toTitleCase(name);
     var displayTitle = sanitizeText(title);
+    var sanitizedName = sanitizeText(name);
 
-    if (!normalizedName) {
+    if (!sanitizedName) {
       return "";
     }
 
     if (normalizedTitle === "FAMILY") {
-      return "Family of " + normalizedName;
+      return "Family of " + sanitizedName;
     }
 
     if (normalizedTitle === "MR & MRS & FAMILY") {
